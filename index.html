@@ -376,7 +376,7 @@
                 
               
 
-              <time title="Created: 2019-04-15 00:15:01 / Modified: 00:15:22" itemprop="dateCreated datePublished" datetime="2019-04-15T00:15:01+08:00">2019-04-15</time>
+              <time title="Created: 2019-04-15 00:15:01 / Modified: 00:21:02" itemprop="dateCreated datePublished" datetime="2019-04-15T00:15:01+08:00">2019-04-15</time>
             
 
             
@@ -434,8 +434,7 @@
 
       
         
-          
-            <h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">'username'</span>@<span class="string">'host'</span> IDENTIFIED BY <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+          <h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">'username'</span>@<span class="string">'host'</span> IDENTIFIED BY <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
 <li>username：你将创建的用户名</li>
 <li>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用<code>localhost</code>，如果想让该用户可以从<strong>任意远程主机</strong>登陆，可以使用通配符<code>%</code></li>
@@ -449,20 +448,15 @@
 <li>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用 <code>*</code> 表示，如 <code>*.*</code></li>
 </ul>
 <h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT SELECT, INSERT ON test.user TO <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">GRANT ALL ON *.* TO <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT privileges ON databasename.tablename TO <span class="string">'username'</span>@<span class="string">'host'</span> WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
-<h3 id="设置与更改用户密码"><a href="#设置与更改用户密码" class="headerlink" title="设置与更改用户密码"></a>设置与更改用户密码</h3><h4 id="命令-2"><a href="#命令-2" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET PASSWORD FOR <span class="string">'username'</span>@<span class="string">'host'</span> = PASSWORD(<span class="string">'newpassword'</span>);</span><br></pre></td></tr></table></figure>
-<p>如果是当前登录用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET PASSWORD = PASSWORD(<span class="string">"newpassword"</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET PASSWORD FOR <span class="string">'veryuser'</span>@<span class="string">'%'</span> = PASSWORD(<span class="string">"123456"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="撤销用户权限"><a href="#撤销用户权限" class="headerlink" title="撤销用户权限"></a>撤销用户权限</h3><h4 id="命令-3"><a href="#命令-3" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE privilege ON databasename.tablename FROM <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="说明-2"><a href="#说明-2" class="headerlink" title="说明"></a>说明</h4><p><code>privilege</code>, <code>databasename</code>, <code>tablename</code>：同授权</p>
-<h4 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REVOKE SELECT ON *.* FROM <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">REVOKE ALL ON *.* FROM <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><p>假如你在给用户<code>&#39;veryuser&#39;@&#39;%&#39;</code>授权的时候是这样的（或类似的）：<code>GRANT SELECT ON test.user TO &#39;veryuser&#39;@&#39;%&#39;</code>，则在使用<code>REVOKE SELECT ON *.* FROM &#39;veryuser&#39;@&#39;%&#39;;</code>命令并不能撤销该用户对<code>test</code>数据库中<code>user</code>表的<code>SELECT</code>操作。相反，如果授权使用的是<code>GRANT SELECT ON *.* TO &#39;veryuser&#39;@&#39;%&#39;;</code>则<code>REVOKE SELECT ON test.user FROM &#39;veryuser&#39;@&#39;%&#39;;</code>命令也不能撤销该用户对<code>test</code>数据库中<code>user</code>表的<code>Select</code>权限。</p>
-<p>具体信息可以用命令<code>SHOW GRANTS FOR &#39;veryuser&#39;@&#39;%&#39;;</code> 查看。</p>
-<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><h4 id="命令-4"><a href="#命令-4" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP USER <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/15/mysql创建用户与授权/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
