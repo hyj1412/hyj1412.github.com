@@ -575,7 +575,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-21 23:18:45" itemprop="dateModified" datetime="2019-05-21T23:18:45+08:00">2019-05-21</time>
+                <time title="Modified: 2019-05-21 23:21:19" itemprop="dateModified" datetime="2019-05-21T23:21:19+08:00">2019-05-21</time>
               
             
           </span>
@@ -629,7 +629,7 @@
       
         
           
-            <h3 id="centos-iptables-开放-22-88-3306-端口"><a href="#centos-iptables-开放-22-88-3306-端口" class="headerlink" title="centos iptables 开放 22 88 3306 端口"></a>centos iptables 开放 22 88 3306 端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 443 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
+            <h3 id="centos-iptables-开放常用端口"><a href="#centos-iptables-开放常用端口" class="headerlink" title="centos iptables 开放常用端口"></a>centos iptables 开放常用端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 443 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
 <p>然后保存</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables save</span><br></pre></td></tr></table></figure>
 <p>查看打开的端口</p>
