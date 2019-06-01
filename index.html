@@ -327,6 +327,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/06/01/sftp限制用户访问目录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content="万码奔腾">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June Hu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/01/sftp限制用户访问目录/" class="post-title-link" itemprop="url">sftp限制用户访问目录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-01 10:40:06 / Modified: 10:55:05" itemprop="dateCreated datePublished" datetime="2019-06-01T10:40:06+08:00">2019-06-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>场景需求:<br>新增一个用户<code>last</code>，该用户<code>不能 ssh 登录</code>，<br>但是可以访问自己的家目录，且<code>只能操作自己的家目录</code></p>
+</blockquote>
+<h4 id="先以-root-账号登录"><a href="#先以-root-账号登录" class="headerlink" title="先以 root 账号登录"></a>先以 root 账号登录</h4><p>终端工具登录即可</p>
+<h4 id="创建用户、设置密码"><a href="#创建用户、设置密码" class="headerlink" title="创建用户、设置密码"></a>创建用户、设置密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -s /sbin/nologin -m last</span><br><span class="line">passwd last</span><br></pre></td></tr></table></figure>
+<h4 id="设置用户家目录以及权限"><a href="#设置用户家目录以及权限" class="headerlink" title="设置用户家目录以及权限"></a>设置用户家目录以及权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改家目录的属主是root，属组是last</span></span><br><span class="line">chown root:last /home/last</span><br><span class="line"><span class="comment"># 修改last的家目录权限</span></span><br><span class="line">chmod 755 /home/last</span><br></pre></td></tr></table></figure>
+<h4 id="家目录下创建-asset-目录"><a href="#家目录下创建-asset-目录" class="headerlink" title="家目录下创建 asset 目录"></a>家目录下创建 asset 目录</h4><blockquote>
+<p>last 用户 sftp 连接之后的操作都发生在 asset 子目录下</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/last</span><br><span class="line">mkdir asset</span><br><span class="line">chown last:last asset</span><br></pre></td></tr></table></figure>
+<h4 id="修改-etc-ssh-sshd-config-配置文件"><a href="#修改-etc-ssh-sshd-config-配置文件" class="headerlink" title="修改 /etc/ssh/sshd_config 配置文件"></a>修改 /etc/ssh/sshd_config 配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Subsystem sftp internal-sftp</span><br><span class="line"></span><br><span class="line">Match User last</span><br><span class="line">ChrootDirectory /home/last</span><br><span class="line">X11Forwarding no</span><br><span class="line">AllowTcpForwarding no</span><br><span class="line">ForceCommand internal-sftp</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后，重启 sshd 生效</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/04/15/mysql创建用户与授权/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1013,207 +1187,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2018/02/04/vim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="June">
-      <meta itemprop="description" content="万码奔腾">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="June Hu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/02/04/vim/" class="post-title-link" itemprop="url">vim编辑器</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-02-04 18:36:06" itemprop="dateCreated datePublished" datetime="2018-02-04T18:36:06+08:00">2018-02-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="vim模式"><a href="#vim模式" class="headerlink" title="vim模式"></a>vim模式</h2><h3 id="模式种类"><a href="#模式种类" class="headerlink" title="模式种类"></a>模式种类</h3><p>编辑模式(命令模式)</p>
-<p>输入模式</p>
-<p>末行模式</p>
-<h3 id="模式转换"><a href="#模式转换" class="headerlink" title="模式转换"></a>模式转换</h3><blockquote>
-<p>编辑–&gt;输入：</p>
-</blockquote>
-<ul>
-<li>i: 在当前光标所在字符的前面，转为输入模式</li>
-<li>a: 在当前光标所在字符的后面，转为输入模式</li>
-<li>o: 在当前光标所在行的下方新建一行，并转为输入模式</li>
-<li>I: 在当前光标所在行的行首，转为输入模式</li>
-<li>A: 在当前光标所在行的行尾，转为输入模式</li>
-<li>O: 在当前光标所在行的上方新建一行，并转为输入模式</li>
-</ul>
-<blockquote>
-<p>输入–&gt;编辑</p>
-</blockquote>
-<p>ESC键</p>
-<blockquote>
-<p>编辑–&gt;末行</p>
-</blockquote>
-<p>输入冒号<code>:</code>即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nu //显示行号</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/02/04/vim/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1260,7 +1233,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1412,7 +1385,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
