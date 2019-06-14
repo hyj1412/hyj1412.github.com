@@ -700,7 +700,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2016/02/29/iptables开放常用端口/">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2016/02/29/iptables配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="June">
@@ -720,7 +720,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/02/29/iptables开放常用端口/" class="post-title-link" itemprop="url">iptables开放常用端口</a>
+                <a href="/2016/02/29/iptables配置/" class="post-title-link" itemprop="url">iptables配置</a>
               
             
           </h1>
@@ -762,7 +762,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-21 23:21:19" itemprop="dateModified" datetime="2019-05-21T23:21:19+08:00">2019-05-21</time>
+                <time title="Modified: 2019-06-14 13:37:42" itemprop="dateModified" datetime="2019-06-14T13:37:42+08:00">2019-06-14</time>
               
             
           </span>
@@ -816,11 +816,15 @@
       
         
           
-            <h3 id="centos-iptables-开放常用端口"><a href="#centos-iptables-开放常用端口" class="headerlink" title="centos iptables 开放常用端口"></a>centos iptables 开放常用端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 21 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 443 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<p>然后保存</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables save</span><br></pre></td></tr></table></figure>
-<p>查看打开的端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables status</span><br></pre></td></tr></table></figure>
+            <h3 id="清空默认规则"><a href="#清空默认规则" class="headerlink" title="清空默认规则"></a>清空默认规则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清空默认规则</span></span><br><span class="line">iptables -F</span><br><span class="line"><span class="comment"># 删除用户自定义规则</span></span><br><span class="line">iptables -X</span><br><span class="line"><span class="comment"># 链的计数器清零</span></span><br><span class="line">iptables -Z</span><br></pre></td></tr></table></figure>
+<h3 id="允许本机访问本机"><a href="#允许本机访问本机" class="headerlink" title="允许本机访问本机"></a>允许本机访问本机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</span><br><span class="line"><span class="comment"># 下面的命令也可以</span></span><br><span class="line"><span class="comment"># iptables -A INPUT -i lo -p all -j ACCEPT</span></span><br><span class="line"><span class="comment"># iptables -A OUTPUT -o lo -p all -j ACCEPT</span></span><br></pre></td></tr></table></figure>
+<h3 id="允许-ssh"><a href="#允许-ssh" class="headerlink" title="允许 ssh"></a>允许 ssh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="允许-DNS-服务，53-端口"><a href="#允许-DNS-服务，53-端口" class="headerlink" title="允许 DNS 服务，53 端口"></a>允许 DNS 服务，53 端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A OUTPUT -p udp --dport 53 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p udp --sport 53 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="允许所有-80-和-443-端口，即-http、https"><a href="#允许所有-80-和-443-端口，即-http、https" class="headerlink" title="允许所有 80 和 443 端口，即 http、https"></a>允许所有 80 和 443 端口，即 http、https</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p tcp --dport 443 -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p tcp --sport 443 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="允许所有已经建立的和相关的连接"><a href="#允许所有已经建立的和相关的连接" class="headerlink" title="允许所有已经建立的和相关的连接"></a>允许所有已经建立的和相关的连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="禁止其他未允许的规则访问"><a href="#禁止其他未允许的规则访问" class="headerlink" title="禁止其他未允许的规则访问"></a>禁止其他未允许的规则访问</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT DROP</span><br><span class="line">iptables -P FORWARD DROP</span><br><span class="line"><span class="comment"># 下面的配置可以不执行，但是执行前，必须先配置需要放行的OUTPUT端口</span></span><br><span class="line"><span class="comment"># iptables -P OUTPUT DROP</span></span><br></pre></td></tr></table></figure>
+<h3 id="保存规则"><a href="#保存规则" class="headerlink" title="保存规则"></a>保存规则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables save</span><br></pre></td></tr></table></figure>
+<h3 id="查看规则"><a href="#查看规则" class="headerlink" title="查看规则"></a>查看规则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -n --line-numbers</span><br></pre></td></tr></table></figure>
 
           
         
