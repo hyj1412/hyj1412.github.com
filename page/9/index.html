@@ -328,6 +328,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2014/08/11/fedora-20-e5-ae-89-e8-a3-85fcitx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June Hu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2014/08/11/fedora-20-e5-ae-89-e8-a3-85fcitx/" class="post-title-link" itemprop="url">fedora 20 安装fcitx</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2014-08-11 00:48:12" itemprop="dateCreated datePublished" datetime="2014-08-11T00:48:12+08:00">2014-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum remove ibus</span><br><span class="line">gsettings <span class="built_in">set</span> org.gnome.settings-daemon.plugins.keyboard active <span class="literal">false</span></span><br><span class="line">yum install fcitx  fcitx-configtool fcitx-table fcitx-table-chinese fcitx-pinyin</span><br></pre></td></tr></table></figure>
+<p>切换到用户：</p>
+<p>在.bash_profile  加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span>  GTK_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span>  QT_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span>  XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2014/08/11/window-scroll-e4-ba-8b-e4-bb-b6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -539,7 +715,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -602,7 +778,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -709,7 +889,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

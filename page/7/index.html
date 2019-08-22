@@ -328,6 +328,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2015/08/06/compress-js-and-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June Hu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/08/06/compress-js-and-css/" class="post-title-link" itemprop="url">压缩css和js文件</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2015-08-06 00:09:02" itemprop="dateCreated datePublished" datetime="2015-08-06T00:09:02+08:00">2015-08-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、下载最新的yuicompressor-jar"><a href="#1、下载最新的yuicompressor-jar" class="headerlink" title="1、下载最新的yuicompressor.jar"></a>1、下载最新的yuicompressor.jar</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/yui/yuicompressor/releases</span><br></pre></td></tr></table></figure>
+<h3 id="2、运行脚本"><a href="#2、运行脚本" class="headerlink" title="2、运行脚本"></a>2、运行脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入您要压缩的文件所在的目录 : "</span> dir</span><br><span class="line"><span class="comment">#if [ ! -n "$1" ] ;then</span></span><br><span class="line"><span class="keyword">if</span> [ ! -n <span class="string">"<span class="variable">$dir</span>"</span> ] ;<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"请输入您要压缩的文件所在的目录"</span>;</span><br><span class="line">  <span class="built_in">exit</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 这里换成css即可</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `find <span class="variable">$dir</span> -name <span class="string">"*.js"</span>`;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"compress <span class="variable">$i</span>"</span></span><br><span class="line">  java -jar /home/june/yuicompressor-2.4.8.jar --charset=utf8 -o <span class="variable">$i</span> <span class="variable">$i</span> --nomunge</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>原文出处：<a href="http://176code.com/2015/05/07/%E5%86%99%E4%B8%AA%E8%84%9A%E6%9C%AC%E5%8E%8B%E7%BC%A9JS-CSS/" target="_blank" rel="noopener">Blog By Blank</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2015/07/07/reg-express/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1061,181 +1236,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2014/08/14/fedora-yum-e6-ba-90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="June">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="June Hu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2014/08/14/fedora-yum-e6-ba-90/" class="post-title-link" itemprop="url">fedora  yum 源</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2014-08-14 22:39:40" itemprop="dateCreated datePublished" datetime="2014-08-14T22:39:40+08:00">2014-08-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>加载RPMForge源 <a href="http://pkgs.repoforge.org/rpmforge-release/" target="_blank" rel="noopener">http://pkgs.repoforge.org/rpmforge-release/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<p>remi <a href="http://mirrors.hustunique.com/remi/" target="_blank" rel="noopener">http://mirrors.hustunique.com/remi/</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1282,7 +1282,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1345,7 +1345,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1452,7 +1456,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

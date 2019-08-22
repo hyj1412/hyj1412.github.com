@@ -328,6 +328,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/08/22/composer安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June Hu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/22/composer安装/" class="post-title-link" itemprop="url">composer安装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-22 16:59:18 / Modified: 17:12:55" itemprop="dateCreated datePublished" datetime="2019-08-22T16:59:18+08:00">2019-08-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/composer/" itemprop="url" rel="index"><span itemprop="name">composer</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/composer/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="composer-简介"><a href="#composer-简介" class="headerlink" title="composer 简介"></a>composer 简介</h3><p>composer 是 PHP 世界里用来管理依赖（dependency）关系的工具</p>
+<p><a href="https://www.phpcomposer.com/" target="_blank" rel="noopener">点击这里</a>访问国内站点</p>
+<h3 id="composer-安装"><a href="#composer-安装" class="headerlink" title="composer 安装"></a>composer 安装</h3><blockquote>
+<p>安装环境: Mac</p>
+</blockquote>
+<p><a href="https://getcomposer.org/download/" target="_blank" rel="noopener">点击这里</a>打开官方网站，往下翻有个<code>Manual Download</code>，复制最新版本的下载链接</p>
+<p>打开命令行工具，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开始下载</span></span><br><span class="line">wget https://getcomposer.org/download/1.9.0/composer.phar</span><br><span class="line"><span class="comment"># 为了全局使用，将其移动到/usr/local/bin目录下</span></span><br><span class="line">mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</span><br><span class="line"><span class="comment"># 如果权限不足，添加可执行权限</span></span><br><span class="line">chmod a+x /usr/<span class="built_in">local</span>/bin/composer</span><br></pre></td></tr></table></figure>
+<h3 id="配置-Packagist-镜像"><a href="#配置-Packagist-镜像" class="headerlink" title="配置 Packagist 镜像"></a>配置 Packagist 镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br><span class="line"><span class="comment"># 或者配置阿里的</span></span><br><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>再加一句，composer 的全剧配置文件位置<br>~/.composer/config.json</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/08/03/docker部署nextcloud/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,180 +1203,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/04/14/mysql复制表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="June">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="June Hu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/14/mysql复制表/" class="post-title-link" itemprop="url">mysql复制表</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-14 23:58:36 / Modified: 23:59:13" itemprop="dateCreated datePublished" datetime="2019-04-14T23:58:36+08:00">2019-04-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="复制表结构"><a href="#复制表结构" class="headerlink" title="复制表结构"></a>复制表结构</h4><p>方法 1:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table users_bak like users;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
-<p>方法 2:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table users_bak select * from users <span class="built_in">limit</span> 0;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
-<p>方法 3:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示创表的sql</span></span><br><span class="line">mysql&gt; show create table users \G;</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line"> Table: users</span><br><span class="line">Create Table: CREATE TABLE `users` (       //改表名</span><br><span class="line"> `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line"> `name` varchar(60) NOT NULL DEFAULT <span class="string">''</span>,</span><br><span class="line"> `pass` varchar(64) NOT NULL DEFAULT <span class="string">''</span>,</span><br><span class="line"> PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<p>把 sql 语句 copy 出来，改一下表名和 atuo_increment，然后在执行一下。</p>
-<h4 id="复制表结构以及数据"><a href="#复制表结构以及数据" class="headerlink" title="复制表结构以及数据"></a>复制表结构以及数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table users_bak as select * from users;</span><br><span class="line">Query OK, 4 rows affected (0.01 sec)</span><br><span class="line">Records: 4  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>参考链接</p>
-</blockquote>
-<ul>
-<li><a href="http://blog.51yip.com/mysql/1311.html" target="_blank" rel="noopener">海底苍鹰博客</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1244,7 +1249,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1307,7 +1312,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1414,7 +1423,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
