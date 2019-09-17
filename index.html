@@ -373,12 +373,24 @@
                 
               
 
-              <time title="Created: 2019-08-22 16:59:18 / Modified: 17:20:20" itemprop="dateCreated datePublished" datetime="2019-08-22T16:59:18+08:00">2019-08-22</time>
+              <time title="Created: 2019-08-22 16:59:18" itemprop="dateCreated datePublished" datetime="2019-08-22T16:59:18+08:00">2019-08-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-17 14:12:26" itemprop="dateModified" datetime="2019-09-17T14:12:26+08:00">2019-09-17</time>
               
             
           </span>
@@ -449,7 +461,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开始下载</span></span><br><span class="line">wget https://getcomposer.org/download/1.9.0/composer.phar</span><br><span class="line"><span class="comment"># 为了全局使用，将其移动到/usr/local/bin目录下</span></span><br><span class="line">mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</span><br><span class="line"><span class="comment"># 如果权限不足，添加可执行权限</span></span><br><span class="line">chmod a+x /usr/<span class="built_in">local</span>/bin/composer</span><br></pre></td></tr></table></figure>
 <h3 id="配置-Packagist-镜像"><a href="#配置-Packagist-镜像" class="headerlink" title="配置 Packagist 镜像"></a>配置 Packagist 镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br><span class="line"><span class="comment"># 或者配置阿里的</span></span><br><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>再加一句，composer 的全剧配置文件位置<br>~/.composer/config.json</p>
+<p>再加一句，composer 的全局配置文件位置<br>~/.composer/config.json</p>
 </blockquote>
 
           
