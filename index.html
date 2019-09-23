@@ -566,12 +566,24 @@
                 
               
 
-              <time title="Created: 2019-08-03 14:14:34 / Modified: 15:26:23" itemprop="dateCreated datePublished" datetime="2019-08-03T14:14:34+08:00">2019-08-03</time>
+              <time title="Created: 2019-08-03 14:14:34" itemprop="dateCreated datePublished" datetime="2019-08-03T14:14:34+08:00">2019-08-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-23 15:23:53" itemprop="dateModified" datetime="2019-09-23T15:23:53+08:00">2019-09-23</time>
               
             
           </span>
@@ -630,9 +642,13 @@
 <p><strong>基于 centos7 服务器</strong></p>
 </blockquote>
 <ul>
+<li>卸载旧版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine</span><br></pre></td></tr></table></figure>
+<ul>
 <li>安装必要的工具</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装软件源</li>
 </ul>
