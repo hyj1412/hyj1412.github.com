@@ -328,6 +328,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/10/29/gitlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June Hu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/29/gitlab/" class="post-title-link" itemprop="url">gitlab</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-10-29 13:13:00 / Modified: 13:15:38" itemprop="dateCreated datePublished" datetime="2019-10-29T13:13:00+08:00">2019-10-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="添加-gitlab-repo"><a href="#添加-gitlab-repo" class="headerlink" title="添加 gitlab repo"></a>添加 gitlab repo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[gitlab-ce]</span><br><span class="line">name=gitlab-ce</span><br><span class="line">baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://packages.gitlab.com/gpg.key</span><br></pre></td></tr></table></figure>
+<h3 id="yum-安装-gitlab"><a href="#yum-安装-gitlab" class="headerlink" title="yum 安装 gitlab"></a>yum 安装 gitlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br><span class="line">yum install gitlab-ce</span><br><span class="line"><span class="comment"># 修改服务器地址</span></span><br><span class="line">vim /etc/gitlab/gitlab.rb</span><br></pre></td></tr></table></figure>
+<h3 id="配置-gitlab"><a href="#配置-gitlab" class="headerlink" title="配置 gitlab"></a>配置 gitlab</h3><blockquote>
+<p>vi /etc/gitlab/gitlab.rb</p>
+</blockquote>
+<p><code>external_url &#39;http://ip&#39;</code></p>
+<p>使配置生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/08/22/composer安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1055,184 +1223,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/04/15/mysql导入导出/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="June">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="June Hu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/15/mysql导入导出/" class="post-title-link" itemprop="url">mysql导入导出</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-15 00:00:24 / Modified: 00:13:22" itemprop="dateCreated datePublished" datetime="2019-04-15T00:00:24+08:00">2019-04-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h4><ul>
-<li>方法 1:</li>
-</ul>
-<p>mysql 命令导入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入后回车会提示输入密码</span></span><br><span class="line">mysql -u username -p databasename &lt; backupfile.sql</span><br></pre></td></tr></table></figure>
-<ul>
-<li>方法 2:</li>
-</ul>
-<p>source 命令导入数据库需要先登录到数库终端：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建数据库</span></span><br><span class="line">mysql&gt; create database cloud;</span><br><span class="line"><span class="comment"># 使用已创建的数据库</span></span><br><span class="line">mysql&gt; use cloud;</span><br><span class="line"><span class="comment"># 设置编码 utf8mb4 utf8</span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> names utf8mb4;</span><br><span class="line"><span class="comment"># 导入备份数据库(绝对路径)</span></span><br><span class="line">mysql&gt; <span class="built_in">source</span> /home/download/backupfile.sql</span><br></pre></td></tr></table></figure>
-<h4 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h4><ul>
-<li>导出表结构和数据</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入之后回车提示输入密码</span></span><br><span class="line">mysqldump -u username -p databasename &gt; ~/Downloads/backupfile.sql</span><br><span class="line"><span class="comment"># 或者 用户名、密码紧挨着参数-u -p</span></span><br><span class="line">mysqldump -u<span class="string">'username'</span> -p<span class="string">'password'</span> databasename &gt; ~/Downloads/backupfile.sql</span><br></pre></td></tr></table></figure>
-<ul>
-<li>只导出表结构</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -p -d databasename &gt; ~/Downloads/backupfile.sql</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1279,7 +1269,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1455,7 +1445,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

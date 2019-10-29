@@ -328,6 +328,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2015/11/28/JavaScript判断IE各版本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="June">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="June Hu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/11/28/JavaScript判断IE各版本/" class="post-title-link" itemprop="url">JavaScript判断IE各版本</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2015-11-28 21:38:34" itemprop="dateCreated datePublished" datetime="2015-11-28T21:38:34+08:00">2015-11-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/ie/" itemprop="url" rel="index"><span itemprop="name">ie</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/ie/兼容性/" itemprop="url" rel="index"><span itemprop="name">兼容性</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="JavaScript判断IE各版本最完美解决方案"><a href="#JavaScript判断IE各版本最完美解决方案" class="headerlink" title="JavaScript判断IE各版本最完美解决方案"></a>JavaScript判断IE各版本最完美解决方案</h3><p>jQuery在1.9版本之前，提供了一个浏览器对象检测的属性$.browser，使用率极高。但是在1.9版本发布之后，大家钟爱的这个属性被jQuery无情的抛弃了。大家开始着手寻找$.browser的替代方案。于是各种利用IE bug的检测方法被搜了出来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// shortest from a Russian</span></span><br><span class="line"><span class="keyword">var</span> ie = !-[<span class="number">1</span>,];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Option from Dean Edwards:</span></span><br><span class="line"><span class="keyword">var</span> ie = <span class="comment">/*@cc_on!@*/</span><span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Use the commented line:</span></span><br><span class="line"><span class="keyword">var</span> ie<span class="comment">//@cc_on=1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Variation (shorter variable):</span></span><br><span class="line"><span class="keyword">var</span> ie = <span class="string">'\v'</span>==<span class="string">'v'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Option to Gareth Hayes (former record-holder):</span></span><br><span class="line"><span class="keyword">var</span> ie = !+<span class="string">"\v1"</span>;</span><br></pre></td></tr></table></figure>
+<p>还有一些读取navigator.userAgent的方式，在苹果看来这些写法都不够友好，也不容易记忆，在搜索和挑选之后，终于找到了一个容易理解且友好方便的写法！</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2015/11/28/JavaScript判断IE各版本/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2015/09/14/mysqladmin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1092,179 +1287,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2015/08/08/is-mobile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="June">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="June Hu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/08/08/is-mobile/" class="post-title-link" itemprop="url">js判断移动设备</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-08-08 23:56:08" itemprop="dateCreated datePublished" datetime="2015-08-08T23:56:08+08:00">2015-08-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="js判断是否是移动端设备"><a href="#js判断是否是移动端设备" class="headerlink" title="js判断是否是移动端设备"></a>js判断是否是移动端设备</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断是否是移动设备</span></span><br><span class="line"><span class="comment"> * 主要判断userAgent</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_mobile</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ua = navigator.userAgent.toLowerCase();</span><br><span class="line">  <span class="keyword">var</span> is_android = ua.match(<span class="regexp">/android/i</span>) ? <span class="literal">true</span>: <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">var</span> is_blackberry = ua.match(<span class="regexp">/blackberry/i</span>) ? <span class="literal">true</span>: <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">var</span> is_ios = ua.match(<span class="regexp">/iphone|ipad|ipod/i</span>) ? <span class="literal">true</span>: <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">var</span> is_win = ua.match(<span class="regexp">/iemobile/i</span>) ? <span class="literal">true</span>: <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">var</span> is_mobile = is_android || is_blackberry || is_ios || is_win;</span><br><span class="line">  <span class="keyword">return</span> is_mobile;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1311,7 +1333,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1487,7 +1509,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
