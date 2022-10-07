@@ -328,6 +328,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2022/10/07/Go基础之map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/10/07/Go基础之map/" class="post-title-link" itemprop="url">Go基础之map</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2022-10-07 22:34:08 / Modified: 22:47:21" itemprop="dateCreated datePublished" datetime="2022-10-07T22:34:08+08:00">2022-10-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="map-的定义和初始化"><a href="#map-的定义和初始化" class="headerlink" title="map 的定义和初始化"></a>map 的定义和初始化</h3><p>map 存储的是键值对的数据</p>
+<p>map 也需要申请内存</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">map</span>[KeyType]ValueType</span><br></pre></td></tr></table></figure>
+<ul>
+<li>KeyType:表示键的类型。</li>
+<li>ValueType:表示键对应的值的类型。</li>
+</ul>
+<p>map 类型的变量默认初始值为 nil，需要使用 make()函数来分配内存。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span>(<span class="keyword">map</span>[KeyType]ValueType, [<span class="built_in">cap</span>])</span><br></pre></td></tr></table></figure>
+<p>其中 cap 表示 map 的容量，该参数虽然不是必须的，但是我们应该在初始化 map 的时候就为其指定一个合适的容量。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 先声明再初始化填充数据</span><br><span class="line"><span class="keyword">var</span> m1 <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span></span><br><span class="line"><span class="comment">// true 初始值为 nil，需要使用 make()函数来分配内存</span></span><br><span class="line">fmt.Println(m1 == <span class="literal">nil</span>)</span><br><span class="line">m1 = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>, <span class="number">2</span>)</span><br><span class="line">m1[<span class="string">"张三"</span>] = <span class="number">90</span></span><br><span class="line">m1[<span class="string">"小明"</span>] = <span class="number">100</span></span><br><span class="line">m1[<span class="string">"李四"</span>] = <span class="number">98</span></span><br><span class="line">fmt.Println(m1)</span><br><span class="line"><span class="comment">// 如果key不存在返回的是value对应类型的零值, 这里会打印0</span></span><br><span class="line">fmt.Println(m1[<span class="string">"王五"</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 声明时初始化并填充数据</span><br><span class="line">scoreMap2 := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>&#123;</span><br><span class="line">    <span class="string">"张三"</span>: <span class="number">90</span>,</span><br><span class="line">    <span class="string">"小明"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="string">"李四"</span>: <span class="number">98</span>,</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(scoreMap2)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之map/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2022/10/07/Go基础之切片/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -373,7 +551,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:32:08" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:47:25" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
             
 
             
@@ -1014,187 +1192,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2022/10/07/Go基础之初识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hyj1412">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hyj1412's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/10/07/Go基础之初识/" class="post-title-link" itemprop="url">Go基础之初识</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2022-10-07 20:45:03 / Modified: 22:31:00" itemprop="dateCreated datePublished" datetime="2022-10-07T20:45:03+08:00">2022-10-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>官网: <a href="https://go.dev/dl/" target="_blank" rel="noopener">https://go.dev/dl/</a></p>
-<p>国内: <a href="https://go.p2hp.com/go.dev/dl/" target="_blank" rel="noopener">https://go.p2hp.com/go.dev/dl/</a></p>
-<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>设置代理</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.cn,direct</span><br></pre></td></tr></table></figure>
-<p>查看 go 的版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go version</span><br><span class="line">go version go1.19.1 darwin/amd64</span><br></pre></td></tr></table></figure>
-<h3 id="Go-命令"><a href="#Go-命令" class="headerlink" title="Go 命令"></a>Go 命令</h3><p><code>go build</code> 编译 Go 程序</p>
-<p><code>go build -o xxx</code> 编译成 xxx 文件</p>
-<p><code>go run main.go</code> 像执行脚本一样执行 main.go</p>
-<p><code>go install</code> 先编译后拷贝</p>
-<h3 id="Go-语言文件基础语法"><a href="#Go-语言文件基础语法" class="headerlink" title="Go 语言文件基础语法"></a>Go 语言文件基础语法</h3><p>存放 Go 源代码的文件后缀名是<code>.go</code></p>
-<p>文件第一行 <code>package</code>关键字声明包名</p>
-<p>如果要编译可执行文件，必须要有 main 包和 main 函数(入口函数)</p>
-<p>Go 语言函数外的语句必须以关键字开头</p>
-<p>函数内部定义的变量必须使用</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2022/10/07/Go基础之初识/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1241,7 +1238,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

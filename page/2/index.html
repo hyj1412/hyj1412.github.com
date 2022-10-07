@@ -328,6 +328,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2022/10/07/Go基础之初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/10/07/Go基础之初识/" class="post-title-link" itemprop="url">Go基础之初识</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2022-10-07 20:45:03 / Modified: 22:31:00" itemprop="dateCreated datePublished" datetime="2022-10-07T20:45:03+08:00">2022-10-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>官网: <a href="https://go.dev/dl/" target="_blank" rel="noopener">https://go.dev/dl/</a></p>
+<p>国内: <a href="https://go.p2hp.com/go.dev/dl/" target="_blank" rel="noopener">https://go.p2hp.com/go.dev/dl/</a></p>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>设置代理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.cn,direct</span><br></pre></td></tr></table></figure>
+<p>查看 go 的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go version</span><br><span class="line">go version go1.19.1 darwin/amd64</span><br></pre></td></tr></table></figure>
+<h3 id="Go-命令"><a href="#Go-命令" class="headerlink" title="Go 命令"></a>Go 命令</h3><p><code>go build</code> 编译 Go 程序</p>
+<p><code>go build -o xxx</code> 编译成 xxx 文件</p>
+<p><code>go run main.go</code> 像执行脚本一样执行 main.go</p>
+<p><code>go install</code> 先编译后拷贝</p>
+<h3 id="Go-语言文件基础语法"><a href="#Go-语言文件基础语法" class="headerlink" title="Go 语言文件基础语法"></a>Go 语言文件基础语法</h3><p>存放 Go 源代码的文件后缀名是<code>.go</code></p>
+<p>文件第一行 <code>package</code>关键字声明包名</p>
+<p>如果要编译可执行文件，必须要有 main 包和 main 函数(入口函数)</p>
+<p>Go 语言函数外的语句必须以关键字开头</p>
+<p>函数内部定义的变量必须使用</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之初识/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/10/29/gitlab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1043,186 +1224,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/04/15/mysql创建用户与授权/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hyj1412">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hyj1412's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/15/mysql创建用户与授权/" class="post-title-link" itemprop="url">mysql创建用户与授权</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-15 00:15:01 / Modified: 00:21:02" itemprop="dateCreated datePublished" datetime="2019-04-15T00:15:01+08:00">2019-04-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">'username'</span>@<span class="string">'host'</span> IDENTIFIED BY <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
-<li>username：你将创建的用户名</li>
-<li>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用<code>localhost</code>，如果想让该用户可以从<strong>任意远程主机</strong>登陆，可以使用通配符<code>%</code></li>
-<li>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</li>
-</ul>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">'tom'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br><span class="line">CREATE USER <span class="string">'veryuser'</span>@<span class="string">'192.168.1.101_'</span> IDENDIFIED BY <span class="string">'123456'</span>;</span><br><span class="line">CREATE USER <span class="string">'veryuser'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'123456'</span>;</span><br><span class="line">CREATE USER <span class="string">'veryuser'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">''</span>;</span><br><span class="line">CREATE USER <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><h4 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT privileges ON databasename.tablename TO <span class="string">'username'</span>@<span class="string">'host'</span></span><br></pre></td></tr></table></figure>
-<h4 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h4><ul>
-<li>privileges：用户的操作权限，如<code>SELECT</code>，<code>INSERT</code>，<code>UPDATE</code>等，如果要授予所的权限则使用<code>ALL</code></li>
-<li>databasename：数据库名</li>
-<li>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用 <code>*</code> 表示，如 <code>*.*</code></li>
-</ul>
-<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT SELECT, INSERT ON test.user TO <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">GRANT ALL ON *.* TO <span class="string">'veryuser'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/15/mysql创建用户与授权/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1269,7 +1270,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
