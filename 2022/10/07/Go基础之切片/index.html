@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="hyj1412&#39;s Blog">
 <meta property="og:description" content="定义以及初始化切片是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装，支持自动扩容。 切片是一个引用类型，它的内部结构包含地址、长度和容量。 切片: 指针、长度、容量 声明语法: var name []T 例如: 12345678var s1 []int// []fmt.Println(s1)// true 没有分配内存 == nil 故打印输出truefmt.Println(s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-10-07T14:26:26.380Z">
+<meta property="og:updated_time" content="2022-10-07T14:32:08.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go基础之切片">
 <meta name="twitter:description" content="定义以及初始化切片是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装，支持自动扩容。 切片是一个引用类型，它的内部结构包含地址、长度和容量。 切片: 指针、长度、容量 声明语法: var name []T 例如: 12345678var s1 []int// []fmt.Println(s1)// true 没有分配内存 == nil 故打印输出truefmt.Println(s">
@@ -371,7 +371,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:26:26" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:32:08" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
             
 
             
@@ -436,6 +436,7 @@
 <p>例如:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="keyword">int</span></span><br><span class="line"><span class="comment">// []</span></span><br><span class="line">fmt.Println(s1)</span><br><span class="line"><span class="comment">// true 没有分配内存 == nil 故打印输出true</span></span><br><span class="line">fmt.Println(s1 == <span class="literal">nil</span>)</span><br><span class="line">s1 = []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="comment">// [1 2 3]</span></span><br><span class="line">fmt.Println(s1)</span><br></pre></td></tr></table></figure>
 <h4 id="切片的长度和容量"><a href="#切片的长度和容量" class="headerlink" title="切片的长度和容量"></a>切片的长度和容量</h4><p>可以通过使用内置的<code>len()</code>函数求长度，使用内置的<code>cap()</code>函数求切片的容量</p>
+<a id="more"></a>
 <h4 id="切片表达式"><a href="#切片表达式" class="headerlink" title="切片表达式"></a>切片表达式</h4><p>切片的底层就是一个数组，所以可以基于数组通过切片表达式得到切片。切片表达式中的 <code>low</code> 和 <code>high</code> 表示一个索引范围（左包含，右不包含）</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组</span></span><br><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// 切片</span></span><br><span class="line">slice := array[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line"><span class="comment">// slice:[2 3] len(slice):2 cap(slice):4</span></span><br><span class="line">fmt.Printf(<span class="string">"slice:%v len(slice):%v cap(slice):%v\n"</span>, slice, <span class="built_in">len</span>(slice), <span class="built_in">cap</span>(slice))</span><br></pre></td></tr></table></figure>
 <p>当然也可以忽略表达式中的索引。省略了<code>low</code> 则默认是 0，省略了<code>high</code> 则默认为切片操作数的长度</p>

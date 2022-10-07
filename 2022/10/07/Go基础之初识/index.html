@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="hyj1412&#39;s Blog">
 <meta property="og:description" content="下载地址官网: https://go.dev/dl/ 国内: https://go.p2hp.com/go.dev/dl/ 配置环境设置代理 12go env -w GO111MODULE=ongo env -w GOPROXY=https://goproxy.cn,direct 查看 go 的版本 12$ go versiongo version go1.19.1 darwin/amd64 Go">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-10-07T12:46:03.401Z">
+<meta property="og:updated_time" content="2022-10-07T14:31:00.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go基础之初识">
 <meta name="twitter:description" content="下载地址官网: https://go.dev/dl/ 国内: https://go.p2hp.com/go.dev/dl/ 配置环境设置代理 12go env -w GO111MODULE=ongo env -w GOPROXY=https://goproxy.cn,direct 查看 go 的版本 12$ go versiongo version go1.19.1 darwin/amd64 Go">
@@ -371,7 +371,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 20:45:03 / Modified: 20:46:03" itemprop="dateCreated datePublished" datetime="2022-10-07T20:45:03+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 20:45:03 / Modified: 22:31:00" itemprop="dateCreated datePublished" datetime="2022-10-07T20:45:03+08:00">2022-10-07</time>
             
 
             
@@ -443,6 +443,7 @@
 <p>如果要编译可执行文件，必须要有 main 包和 main 函数(入口函数)</p>
 <p>Go 语言函数外的语句必须以关键字开头</p>
 <p>函数内部定义的变量必须使用</p>
+<a id="more"></a>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 多行注释</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"哪吒"</span></span><br><span class="line"><span class="keyword">var</span> age <span class="keyword">int</span></span><br><span class="line">age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">  Num = <span class="number">100</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// main函数是入口函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 函数内部定义的变量必须使用</span></span><br><span class="line">  <span class="keyword">var</span> isOk = <span class="literal">true</span></span><br><span class="line">  fmt.Println(isOk)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>学习资料</strong></p>
 <ol>

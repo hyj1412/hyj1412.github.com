@@ -373,7 +373,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:26:26" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:32:08" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
             
 
             
@@ -431,8 +431,7 @@
 
       
         
-          
-            <h3 id="定义以及初始化"><a href="#定义以及初始化" class="headerlink" title="定义以及初始化"></a>定义以及初始化</h3><p>切片是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装，支持自动扩容。</p>
+          <h3 id="定义以及初始化"><a href="#定义以及初始化" class="headerlink" title="定义以及初始化"></a>定义以及初始化</h3><p>切片是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装，支持自动扩容。</p>
 <p>切片是一个引用类型，它的内部结构包含地址、长度和容量。</p>
 <p>切片: 指针、长度、容量</p>
 <p>声明语法:</p>
@@ -440,47 +439,15 @@
 <p>例如:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="keyword">int</span></span><br><span class="line"><span class="comment">// []</span></span><br><span class="line">fmt.Println(s1)</span><br><span class="line"><span class="comment">// true 没有分配内存 == nil 故打印输出true</span></span><br><span class="line">fmt.Println(s1 == <span class="literal">nil</span>)</span><br><span class="line">s1 = []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="comment">// [1 2 3]</span></span><br><span class="line">fmt.Println(s1)</span><br></pre></td></tr></table></figure>
 <h4 id="切片的长度和容量"><a href="#切片的长度和容量" class="headerlink" title="切片的长度和容量"></a>切片的长度和容量</h4><p>可以通过使用内置的<code>len()</code>函数求长度，使用内置的<code>cap()</code>函数求切片的容量</p>
-<h4 id="切片表达式"><a href="#切片表达式" class="headerlink" title="切片表达式"></a>切片表达式</h4><p>切片的底层就是一个数组，所以可以基于数组通过切片表达式得到切片。切片表达式中的 <code>low</code> 和 <code>high</code> 表示一个索引范围（左包含，右不包含）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组</span></span><br><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// 切片</span></span><br><span class="line">slice := array[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line"><span class="comment">// slice:[2 3] len(slice):2 cap(slice):4</span></span><br><span class="line">fmt.Printf(<span class="string">"slice:%v len(slice):%v cap(slice):%v\n"</span>, slice, <span class="built_in">len</span>(slice), <span class="built_in">cap</span>(slice))</span><br></pre></td></tr></table></figure>
-<p>当然也可以忽略表达式中的索引。省略了<code>low</code> 则默认是 0，省略了<code>high</code> 则默认为切片操作数的长度</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">slice1 := array[<span class="number">1</span>:]</span><br><span class="line">slice2 := array[:<span class="number">3</span>]</span><br><span class="line">slice3 := array[:]</span><br></pre></td></tr></table></figure>
-<p>对切片在进行切片，<code>high</code> 的上限边界是切片的容量 <code>cap(slice)</code>，而不是长度</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">slice := array[<span class="number">1</span>:<span class="number">5</span>]</span><br><span class="line"><span class="comment">// slice:[2 3 4 5] len(slice):4 cap(slice):4</span></span><br><span class="line">fmt.Printf(<span class="string">"slice:%v len(slice):%v cap(slice):%v\n"</span>, slice, <span class="built_in">len</span>(slice), <span class="built_in">cap</span>(slice))</span><br><span class="line">subSlice := slice[<span class="number">3</span>:<span class="number">4</span>] <span class="comment">//这里的索引上限是slice的容量4</span></span><br><span class="line"><span class="comment">// subSlice:[5] len(subSlice):1 cap(subSlice):1</span></span><br><span class="line">fmt.Printf(<span class="string">"subSlice:%v len(subSlice):%v cap(subSlice):%v\n"</span>, subSlice, <span class="built_in">len</span>(subSlice), <span class="built_in">cap</span>(subSlice))</span><br></pre></td></tr></table></figure>
-<h4 id="使用-make-函数构造切片"><a href="#使用-make-函数构造切片" class="headerlink" title="使用 make() 函数构造切片"></a>使用 <code>make()</code> 函数构造切片</h4><p>格式:</p>
-<p><code>make([]T, size, cap)</code></p>
-<p>其中</p>
-<ul>
-<li>T: 切片元素类型</li>
-<li>size: 切片中元素的数量</li>
-<li>cap: 切片的容量</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明并初始化一个切片 make初始化 分配内存</span></span><br><span class="line">s10 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line"><span class="comment">// s10:[0 0] len(s10):2 cap(s10):10</span></span><br><span class="line">fmt.Printf(<span class="string">"s10:%v len(s10):%v cap(s10):%v\n"</span>, s10, <span class="built_in">len</span>(s10),<span class="built_in">cap</span>(s10))</span><br></pre></td></tr></table></figure>
-<h4 id="切片是引用类型"><a href="#切片是引用类型" class="headerlink" title="切片是引用类型"></a>切片是引用类型</h4><p>切片不存值, 下方的示例代码<code>s1</code>和<code>s2</code>底层指向同个数组, 故修改<code>s2</code>也影响了<code>s1</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125; <span class="comment">// [1 2 3]</span></span><br><span class="line">s2 := s1</span><br><span class="line">fmt.Println(s2) <span class="comment">// [1 2 3]</span></span><br><span class="line">s2[<span class="number">1</span>] = <span class="number">200</span></span><br><span class="line">fmt.Println(s1) <span class="comment">// [1 200 3]</span></span><br><span class="line">fmt.Println(s2) <span class="comment">// [1 200 3]</span></span><br></pre></td></tr></table></figure>
-<h3 id="切片的扩容策略"><a href="#切片的扩容策略" class="headerlink" title="切片的扩容策略"></a>切片的扩容策略</h3><ol>
-<li>如果申请的容量大于原来的 2 倍，那么就直接扩容至新申请的容量</li>
-<li>如果小于 1024，那么直接两倍</li>
-<li>如果大于 1024，就按照 1.25 倍去扩容</li>
-<li>具体存储的值的类型不同，扩容策略也有一定的不同</li>
-</ol>
-<h3 id="append-为切片添加元素"><a href="#append-为切片添加元素" class="headerlink" title="append 为切片添加元素"></a>append 为切片添加元素</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="keyword">int</span></span><br><span class="line"><span class="comment">// s1 = make([]int, 1)</span></span><br><span class="line"><span class="comment">// 直接赋值会报错，因为没有初始化内存, 需要上一行的make进行初始化</span></span><br><span class="line"><span class="comment">// s1[0] = 100</span></span><br><span class="line"><span class="comment">// 自动初始化切片</span></span><br><span class="line">s1 = <span class="built_in">append</span>(s1, <span class="number">1</span>)</span><br><span class="line">fmt.Println(s1)</span><br></pre></td></tr></table></figure>
-<p><strong>append 还会自动扩容</strong></p>
-<h3 id="copy-复制切片"><a href="#copy-复制切片" class="headerlink" title="copy 复制切片"></a>copy 复制切片</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="comment">// var s2 []int // 声明了但是未初始化分配内存, copy失败，打印为空</span></span><br><span class="line"><span class="comment">// var s2 = make([]int, 0, 3) // 虽然make初始化了但是长度是0, copy不会自动扩容</span></span><br><span class="line"><span class="keyword">var</span> s2 = <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>, <span class="number">3</span>) <span class="comment">// 这个是可以copy成功的</span></span><br><span class="line"><span class="built_in">copy</span>(s2, s1)</span><br><span class="line">fmt.Println(s2)</span><br></pre></td></tr></table></figure>
-<h3 id="切片的遍历"><a href="#切片的遍历" class="headerlink" title="切片的遍历"></a>切片的遍历</h3><p>和数组一致，支持 <code>for</code> 和 <code>for range</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">11</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">    fmt.Println(i, s[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, value := <span class="keyword">range</span> s &#123;</span><br><span class="line">    fmt.Println(index, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>学习资料</strong></p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=22" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=22</a></li>
-<li><a href="https://www.liwenzhou.com/posts/Go/06_slice/" target="_blank" rel="noopener">https://www.liwenzhou.com/posts/Go/06_slice/</a></li>
-</ol>
-<p><strong>我的环境</strong></p>
-<ul>
-<li><code>Mac</code></li>
-<li><code>go1.19</code></li>
-<li><code>GoLand</code></li>
-</ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之切片/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -580,7 +547,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 21:26:16 / Modified: 22:26:24" itemprop="dateCreated datePublished" datetime="2022-10-07T21:26:16+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 21:26:16 / Modified: 22:32:19" itemprop="dateCreated datePublished" datetime="2022-10-07T21:26:16+08:00">2022-10-07</time>
             
 
             
@@ -638,8 +605,7 @@
 
       
         
-          
-            <h3 id="数组的定义"><a href="#数组的定义" class="headerlink" title="数组的定义"></a>数组的定义</h3><p><code>var 数组变量名 [元素数量]T</code></p>
+          <h3 id="数组的定义"><a href="#数组的定义" class="headerlink" title="数组的定义"></a>数组的定义</h3><p><code>var 数组变量名 [元素数量]T</code></p>
 <p>例如:</p>
 <p>定义一个长度是 10 元素类型是 int 的数组 ages</p>
 <p><code>var ages [10]int</code></p>
@@ -647,24 +613,15 @@
 <p><code>var names [10]string</code></p>
 <p><strong>数组的长度必须是常量，并且长度是数组类型的一部分。一旦定义，长度不能变。</strong></p>
 <h3 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h3><h4 id="指定长度"><a href="#指定长度" class="headerlink" title="指定长度"></a>指定长度</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明了一个变量ages, 它是[10]int类型</span></span><br><span class="line"><span class="keyword">var</span> ages1 [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line"><span class="comment">// [0 0 0 0 0 0 0 0 0 0]</span></span><br><span class="line">fmt.Println(ages1)</span><br><span class="line"><span class="keyword">var</span> ages2 = [<span class="number">10</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// [1 2 3 4 5 0 0 0 0 0]</span></span><br><span class="line">fmt.Println(ages2)</span><br></pre></td></tr></table></figure>
-<h4 id="不指定长度-使用-让编译器根据初始值的个数自行推断数组的长度"><a href="#不指定长度-使用-让编译器根据初始值的个数自行推断数组的长度" class="headerlink" title="不指定长度, 使用...让编译器根据初始值的个数自行推断数组的长度"></a>不指定长度, 使用<code>...</code>让编译器根据初始值的个数自行推断数组的长度</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ages3 = [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// [1 2 3 4 5]</span></span><br><span class="line">fmt.Println(ages3)</span><br></pre></td></tr></table></figure>
-<h4 id="使用索引的方式"><a href="#使用索引的方式" class="headerlink" title="使用索引的方式"></a>使用索引的方式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ages4 = [...]<span class="keyword">int</span>&#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">9</span>: <span class="number">10</span>&#125;</span><br><span class="line"><span class="comment">// [0 1 0 0 0 0 0 0 0 10]</span></span><br><span class="line">fmt.Println(ages4)</span><br></pre></td></tr></table></figure>
-<h3 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// for循环</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">    fmt.Println(nums[i])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// for range循环</span></span><br><span class="line"><span class="keyword">for</span> index, value := <span class="keyword">range</span> nums &#123;</span><br><span class="line">    fmt.Println(index, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 二维数组</span></span><br><span class="line"><span class="keyword">var</span> a1 [<span class="number">3</span>][<span class="number">2</span>]<span class="keyword">int</span></span><br><span class="line">a1 = [<span class="number">3</span>][<span class="number">2</span>]<span class="keyword">int</span>&#123;</span><br><span class="line">    [<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">    [<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">3</span>, <span class="number">4</span>&#125;,</span><br><span class="line">    [<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">5</span>, <span class="number">6</span>&#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [[1 2] [3 4] [5 6]]</span></span><br><span class="line">fmt.Println(a1)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多维数组只有外层的数组可以使用...</span></span><br><span class="line"><span class="keyword">var</span> a2 = [...][<span class="number">2</span>]<span class="keyword">int</span>&#123;</span><br><span class="line">    [<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">    [<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">3</span>, <span class="number">4</span>&#125;,</span><br><span class="line">    [<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">5</span>, <span class="number">6</span>&#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [[1 2] [3 4] [5 6]]</span></span><br><span class="line">fmt.Println(a2)</span><br></pre></td></tr></table></figure>
-<h3 id="数组是值类型"><a href="#数组是值类型" class="headerlink" title="数组是值类型"></a>数组是值类型</h3><p>赋值和传参会复制整个数组，因此改变副本的值，不会改变本身的值。</p>
-<p><strong>学习资料</strong></p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=20" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=20</a></li>
-<li><a href="https://www.liwenzhou.com/posts/Go/05_array/" target="_blank" rel="noopener">https://www.liwenzhou.com/posts/Go/05_array/</a></li>
-</ol>
-<p><strong>我的环境</strong></p>
-<ul>
-<li><code>Mac</code></li>
-<li><code>go1.19</code></li>
-<li><code>GoLand</code></li>
-</ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之数组/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -764,7 +721,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 21:20:43 / Modified: 21:21:34" itemprop="dateCreated datePublished" datetime="2022-10-07T21:20:43+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 21:20:43 / Modified: 22:31:45" itemprop="dateCreated datePublished" datetime="2022-10-07T21:20:43+08:00">2022-10-07</time>
             
 
             
@@ -822,28 +779,17 @@
 
       
         
-          
-            <h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">19</span></span><br><span class="line"><span class="keyword">if</span> age &gt; <span class="number">18</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"成年了"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> age &gt; <span class="number">7</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"小学生"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"快乐时光"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">19</span></span><br><span class="line"><span class="keyword">if</span> age &gt; <span class="number">18</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"成年了"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> age &gt; <span class="number">7</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"小学生"</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"快乐时光"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># 标准循环</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">  fmt.Println(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 变种<span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> ; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">  fmt.Println(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 变种<span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> j = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j &lt; <span class="number">10</span> &#123;</span><br><span class="line">  fmt.Println(j)</span><br><span class="line">  j++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  for &#123;</span></span><br><span class="line"><span class="comment">    fmt.Println("无限循环")</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"># <span class="keyword">for</span> <span class="keyword">range</span></span><br><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> <span class="string">"hello"</span> &#123;</span><br><span class="line">  fmt.Println(k, v)</span><br><span class="line">  fmt.Printf(<span class="string">"%d: %c\n"</span>, k, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p><code>+</code> <code>-</code> <code>*</code> <code>/</code></p>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p><code>&amp;&amp;</code> <code>||</code> <code>!</code></p>
-<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><p><code>&gt;&gt;</code> <code>&lt;&lt;</code> <code>&amp;</code> <code>|</code> <code>^</code></p>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p><code>+=</code> <code>-=</code> <code>/=</code></p>
-<p><code>++</code>和<code>--</code>是独立的语句, 不属于赋值运算符</p>
-<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> <code>!=</code></p>
-<p><strong>学习资料</strong></p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/</a></li>
-<li><a href="https://www.liwenzhou.com/archives/" target="_blank" rel="noopener">https://www.liwenzhou.com/archives/</a></li>
-</ol>
-<p><strong>我的环境</strong></p>
-<ul>
-<li><code>Mac</code></li>
-<li><code>go1.19</code></li>
-<li><code>GoLand</code></li>
-</ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之流程控制和运算符/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -943,7 +889,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 20:47:24 / Modified: 20:47:49" itemprop="dateCreated datePublished" datetime="2022-10-07T20:47:24+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 20:47:24 / Modified: 22:32:26" itemprop="dateCreated datePublished" datetime="2022-10-07T20:47:24+08:00">2022-10-07</time>
             
 
             
@@ -1001,8 +947,7 @@
 
       
         
-          
-            <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>3 种声明方式</p>
+          <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>3 种声明方式</p>
 <ol>
 <li><p><code>var name string</code></p>
 </li>
@@ -1021,39 +966,15 @@
 <li><code>iota</code>在<code>const</code>关键字出现时将被重置为 0</li>
 <li><code>const</code>中每新增一行常量声明, <code>iota</code>累加 1</li>
 </ol>
-<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><h4 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h4><ol>
-<li>无符号整型: <code>uint8</code> <code>uint16</code> <code>uint32</code> <code>uint64</code></li>
-<li>有符号整型: <code>int8</code> <code>int16</code> <code>int32</code> <code>int64</code></li>
-<li><code>int</code>: 具体是 32 位还是 64 位看操作系统</li>
-<li><code>uintptr</code>: 表示指针</li>
-</ol>
-<h4 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h4><p><code>float32</code>和<code>float64</code></p>
-<p>Go 语言中浮点数默认是<code>float64</code></p>
-<h4 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h4><p><code>complex128</code>和<code>complex64</code></p>
-<h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><p><code>true</code>和<code>false</code></p>
-<p>不能和其他的类型做转换</p>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>常用方法</p>
-<p>字符串不能修改</p>
-<h4 id="byte-和-rune-类型"><a href="#byte-和-rune-类型" class="headerlink" title="byte 和 rune 类型"></a>byte 和 rune 类型</h4><p>都属于类型别名</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s1 := <span class="string">"hello"</span></span><br><span class="line">s2 := <span class="string">"无限有无又有限"</span></span><br><span class="line"><span class="keyword">for</span> _, v := <span class="keyword">range</span> s1 &#123;</span><br><span class="line">  fmt.Printf(<span class="string">"%c %T \n"</span>, v, v)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> _, v := <span class="keyword">range</span> s2 &#123;</span><br><span class="line">  fmt.Printf(<span class="string">"%c %T \n"</span>, v, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="字符串、字符、字节"><a href="#字符串、字符、字节" class="headerlink" title="字符串、字符、字节"></a>字符串、字符、字节</h4><p>字符串: 双引号包裹的是字符串</p>
-<p>字符: 单引号包裹的是字符, 单个字母, 单个符号, 单个文字</p>
-<p>字节: 1byte = 8bit</p>
-<p>go 语言中字符串都是 UTF8 编码的, 一个常用汉字一般占用 3 个字节</p>
-<h4 id="其他进制数"><a href="#其他进制数" class="headerlink" title="其他进制数"></a>其他进制数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 八进制数</span></span><br><span class="line"><span class="keyword">var</span> n1 = <span class="number">0777</span></span><br><span class="line"><span class="comment">// 十六进制数</span></span><br><span class="line"><span class="keyword">var</span> n2 = <span class="number">0xff</span></span><br><span class="line">fmt.Println(n1, n2)</span><br><span class="line">fmt.Printf(<span class="string">"%o: %d\n"</span>, n1, n1)</span><br><span class="line">fmt.Printf(<span class="string">"%x: %d\n"</span>, n2, n2)</span><br></pre></td></tr></table></figure>
-<p><strong>学习资料</strong></p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/</a></li>
-<li><a href="https://www.liwenzhou.com/archives/" target="_blank" rel="noopener">https://www.liwenzhou.com/archives/</a></li>
-</ol>
-<p><strong>我的环境</strong></p>
-<ul>
-<li><code>Mac</code></li>
-<li><code>go1.19</code></li>
-<li><code>GoLand</code></li>
-</ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之变量和基本数据类型/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1153,7 +1074,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 20:45:03 / Modified: 20:46:03" itemprop="dateCreated datePublished" datetime="2022-10-07T20:45:03+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 20:45:03 / Modified: 22:31:00" itemprop="dateCreated datePublished" datetime="2022-10-07T20:45:03+08:00">2022-10-07</time>
             
 
             
@@ -1211,8 +1132,7 @@
 
       
         
-          
-            <h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>官网: <a href="https://go.dev/dl/" target="_blank" rel="noopener">https://go.dev/dl/</a></p>
+          <h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>官网: <a href="https://go.dev/dl/" target="_blank" rel="noopener">https://go.dev/dl/</a></p>
 <p>国内: <a href="https://go.p2hp.com/go.dev/dl/" target="_blank" rel="noopener">https://go.p2hp.com/go.dev/dl/</a></p>
 <h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>设置代理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=https://goproxy.cn,direct</span><br></pre></td></tr></table></figure>
@@ -1227,20 +1147,15 @@
 <p>如果要编译可执行文件，必须要有 main 包和 main 函数(入口函数)</p>
 <p>Go 语言函数外的语句必须以关键字开头</p>
 <p>函数内部定义的变量必须使用</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 多行注释</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"哪吒"</span></span><br><span class="line"><span class="keyword">var</span> age <span class="keyword">int</span></span><br><span class="line">age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">  Num = <span class="number">100</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// main函数是入口函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 函数内部定义的变量必须使用</span></span><br><span class="line">  <span class="keyword">var</span> isOk = <span class="literal">true</span></span><br><span class="line">  fmt.Println(isOk)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>学习资料</strong></p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/</a></li>
-<li><a href="https://www.liwenzhou.com/archives/" target="_blank" rel="noopener">https://www.liwenzhou.com/archives/</a></li>
-</ol>
-<p><strong>我的环境</strong></p>
-<ul>
-<li><code>Mac</code></li>
-<li><code>go1.19</code></li>
-<li><code>GoLand</code></li>
-</ul>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2022/10/07/Go基础之初识/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
