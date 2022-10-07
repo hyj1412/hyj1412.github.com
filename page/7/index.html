@@ -190,7 +190,7 @@
     </div>
     
       
-        <p class="site-subtitle">Record, write and share.</p>
+        <p class="site-subtitle">record, write and share.</p>
       
     
     
@@ -312,6 +312,203 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2016/01/12/centos编译安装apache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/01/12/centos编译安装apache/" class="post-title-link" itemprop="url">centos编译安装apache</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-01-12 10:50:26" itemprop="dateCreated datePublished" datetime="2016-01-12T10:50:26+08:00">2016-01-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/apache/" itemprop="url" rel="index"><span itemprop="name">apache</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/apache/lamp/" itemprop="url" rel="index"><span itemprop="name">lamp</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本文是基于全新centos环境，暂无进行任何安装操作的centos</p>
+</blockquote>
+<h3 id="一、关闭selinux"><a href="#一、关闭selinux" class="headerlink" title="一、关闭selinux"></a>一、关闭selinux</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/selinux/config</span><br></pre></td></tr></table></figure>
+<p>接着如下图所示<br><img src="/img/selinux.png" alt="selinux"><br>将<code>SELINUX</code>设置为disabled，然后reboot重启</p>
+<h3 id="二、配置remi源和epel源"><a href="#二、配置remi源和epel源" class="headerlink" title="二、配置remi源和epel源"></a>二、配置remi源和epel源</h3><p>下载地址：</p>
+<ol>
+<li><a href="https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm" target="_blank" rel="noopener">epel</a></li>
+<li><a href="http://rpms.famillecollet.com/enterprise/remi-release-6.rpm" target="_blank" rel="noopener">remi</a></li>
+</ol>
+<p>使用wget进行下载，rpm进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 安装epel</span><br><span class="line">rpm -iv epel-release-latest-6.noarch.rpm</span><br><span class="line">// 安装remi</span><br><span class="line">rpm -iv remi-release-6.rpm</span><br><span class="line">// 重新生成yum源缓存</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/01/12/centos编译安装apache/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1074,203 +1271,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2015/08/10/great-site/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hyj1412">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hyj1412's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/08/10/great-site/" class="post-title-link" itemprop="url">优站收录</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-08-10 23:56:54" itemprop="dateCreated datePublished" datetime="2015-08-10T23:56:54+08:00">2015-08-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/站点收录/" itemprop="url" rel="index"><span itemprop="name">站点收录</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><strong>32个赞的站点收录</strong></p>
-</blockquote>
-<ul>
-<li><p><a href="https://www.verycloud.cn/" target="_blank" rel="noopener">VeryCloud–一站式云服务提供商，云主机、云分发、云DNS</a></p>
-</li>
-<li><p><a href="https://www.verycdn.cn/" target="_blank" rel="noopener">VeryCDN–国内著名CDN服务商，推荐</a></p>
-</li>
-<li><p><a href="http://verynull.com/" target="_blank" rel="noopener">Rambo’s Blog</a></p>
-</li>
-<li><p><a href="http://www.oschina.net/" target="_blank" rel="noopener">开源中国</a></p>
-</li>
-<li><p><a href="http://www.bootcss.com/" target="_blank" rel="noopener">Bootstrap中文网</a></p>
-</li>
-<li><p><a href="http://www.hcharts.cn/" target="_blank" rel="noopener">Highcharts中文网</a></p>
-</li>
-<li><p><a href="http://zhitu.isux.us/" target="_blank" rel="noopener">智图–腾讯家的图片优化平台</a></p>
-</li>
-<li><p><a href="http://www.easyicon.net/" target="_blank" rel="noopener">图标下载 </a></p>
-</li>
-<li><p><a href="https://wrapbootstrap.com/" target="_blank" rel="noopener">WrapBootstrap–so many bootstrap themes</a></p>
-</li>
-<li><p>待续。。。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1317,7 +1317,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
