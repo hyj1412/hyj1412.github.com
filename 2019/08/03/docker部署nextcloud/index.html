@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="dockerdocker 介绍Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 docker 安装 基于 centos7 服务器   卸载旧版本  1yum remove docker docker-client">
+<meta name="keywords" content="docker,nextcloud,cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker部署nextcloud">
+<meta property="og:url" content="http://www.wqcode.com/2019/08/03/docker部署nextcloud/index.html">
+<meta property="og:site_name" content="hyj1412&#39;s Blog">
+<meta property="og:description" content="dockerdocker 介绍Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 docker 安装 基于 centos7 服务器   卸载旧版本  1yum remove docker docker-client">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-23T07:23:53.844Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker部署nextcloud">
+<meta name="twitter:description" content="dockerdocker 介绍Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 docker 安装 基于 centos7 服务器   卸载旧版本  1yum remove docker docker-client">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.wqcode.com/2019/08/03/docker部署nextcloud/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>docker部署nextcloud | hyj1412's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hyj1412's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Record, write and share.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/08/03/docker部署nextcloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">docker部署nextcloud
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-03 14:14:34" itemprop="dateCreated datePublished" datetime="2019-08-03T14:14:34+08:00">2019-08-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-23 15:23:53" itemprop="dateModified" datetime="2019-09-23T15:23:53+08:00">2019-09-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="docker-介绍"><a href="#docker-介绍" class="headerlink" title="docker 介绍"></a>docker 介绍</h3><p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源</p>
+<p>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。</p>
+<h3 id="docker-安装"><a href="#docker-安装" class="headerlink" title="docker 安装"></a>docker 安装</h3><blockquote>
+<p><strong>基于 centos7 服务器</strong></p>
+</blockquote>
+<ul>
+<li>卸载旧版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装必要的工具</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装软件源</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo=https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>更新 yum 缓存，安装 docker</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开机自启动并启动 docker</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>加速 docker 镜像</li>
+</ul>
+<p>新增文件<code>vim /etc/docker/daemon.json</code></p>
+<p>文件内容</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"debug"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"experimental"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"registry-mirrors"</span>: [</span><br><span class="line">    <span class="string">"https://o5ot2rw5.mirror.aliyuncs.com"</span>,</span><br><span class="line">    <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>插一句<br>阿里云的镜像加速地址，需要先注册阿里云之后才能看到，注册之后访问<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a>就可以看到了</p>
+</blockquote>
+<p><code>daemon.json</code> 文件创建完了重启下 docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h3 id="docker-基本概念"><a href="#docker-基本概念" class="headerlink" title="docker 基本概念"></a>docker 基本概念</h3><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><p><code>Docker</code> 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><p>镜像（<code>Image</code>）和容器（<code>Container</code>）的关系，就像是面向对象程序设计中的 <code>类</code> 和 <code>实例</code>一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 <code>root</code> 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
+<h4 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h4><p>仓库的概念跟 git 类似，存放镜像的地方，点击这里访问<a href="https://hub.docker.com/" target="_blank" rel="noopener">官方地址</a></p>
+<h4 id="docker-基本命令"><a href="#docker-基本命令" class="headerlink" title="docker 基本命令"></a>docker 基本命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动容器，后面跟参数容器名或者容器ID</span></span><br><span class="line">docker start</span><br><span class="line"><span class="comment"># 关闭容器，后面跟参数容器名或者容器ID</span></span><br><span class="line">docker stop 容器名（容器ID也可以)</span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run</span><br><span class="line"><span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 删除容器，后面跟参数容器ID，注意，运行中的不能删除</span></span><br><span class="line">docker rm</span><br><span class="line"><span class="comment"># 列出本地镜像</span></span><br><span class="line">docker images</span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull</span><br></pre></td></tr></table></figure>
+<p>下面开始实战，部署 <code>nextcloud</code></p>
+<h2 id="nextcloud"><a href="#nextcloud" class="headerlink" title="nextcloud"></a>nextcloud</h2><h3 id="nextcloud-介绍"><a href="#nextcloud-介绍" class="headerlink" title="nextcloud 介绍"></a>nextcloud 介绍</h3><p>NextCloud 是一款开源网络硬盘系统，最新版本是 12，NextCloud 源代码完全开放，你可以在开源许可协议的约束下免费使用，并且同时支持<code>android</code>和<code>ios</code>系统</p>
+<h3 id="docker-部署-nextcloud"><a href="#docker-部署-nextcloud" class="headerlink" title="docker 部署 nextcloud"></a>docker 部署 nextcloud</h3><ul>
+<li>创建 mysql 容器</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建容器</span></span><br><span class="line">docker run --name nextcloud_db -e MYSQL_ROOT_PASSWORD=123456789 -d mysql:5</span><br><span class="line"><span class="comment"># 进入mysql容器准备创建nextcloud的数据库、用户名、密码</span></span><br><span class="line">docker <span class="built_in">exec</span> -it nextcloud_db mysql -u root -p</span><br><span class="line"><span class="comment"># 下面几行是数据库</span></span><br><span class="line">create database nextcloud;</span><br><span class="line">create user nextcloud@localhost identified by <span class="string">'123456'</span>;</span><br><span class="line">create user nextcloud@<span class="string">'%'</span> identified by <span class="string">'123456'</span>;</span><br><span class="line">grant all privileges on nextcloud.* to nextcloud@localhost identified by <span class="string">'123456'</span>;</span><br><span class="line">grant all privileges on nextcloud.* to nextcloud@<span class="string">'%'</span> identified by <span class="string">'123456'</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>参数详解</p>
+<p><code>run</code> 命令</p>
+<blockquote>
+<p>–name 指定容器名称是 nextcloud_db<br>-e 设置环境变量，这里设置了数据库的 root 密码<br>-d 指定容器后台运行<br>mysql:5 指定镜像是 mysql，并且是 5.x 的版本</p>
+</blockquote>
+<p><code>exec</code> 命令</p>
+<p><code>-i -t</code> 参数<br><code>docker exec</code> 后边可以跟多个参数，这里主要说明 -i -t 参数。</p>
+<p>只用 <code>-i</code> 参数时，由于没有分配伪终端，界面没有我们熟悉的 Linux 命令提示符，但命令执行结果仍然可以返回。</p>
+<p>当 <code>-i -t</code> 参数一起使用时，则可以看到我们熟悉的 Linux 命令提示符，并且从这个 stdin 中 <code>exit</code>，不会导致容器的停止。</p>
+<ul>
+<li>创建 nextcloud 容器</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=nextcloud --link nextcloud_db:db -v /data:/var/www/html/data -p 1080:80 -d nextcloud</span><br></pre></td></tr></table></figure>
+<p>参数详解</p>
+<blockquote>
+<p>–name 指定容器名称是 nextcloud<br>–link nextcloud_db:db 将上面创建的名为 <code>nextcloud</code> 的容器映射名为 <code>db</code> 的服务提供给 <code>nextcloud</code> 容器使用<br>-v /data:/var/www/html/data 将本地的 <code>/data</code> 目录挂载到容器的 <code>/var/www/html/data</code> 目录</p>
+</blockquote>
+<p>打开浏览器访问<code>http://你的服务器IP:1080</code>接可以看见 NextCloud 的界面了，然后参照提示完成设置即可</p>
+<p>这里，数据库选择是 mysql, 数据库名 <code>nextcloud</code>，用户名 <code>nextcloud</code>，密码 <code>123456</code>，数据库地址是 <code>db</code>(就是上面 <code>nextcloud_db</code> 容器的映射服务名称)</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>所有容器对应的目录位于<code>/var/lib/docker/containers</code>目录下，文件名是容器的 ID</p>
+<p>上面的<code>--link</code>操作，会在对应容器的 hosts 文件里面加 IP 与主机名的映射</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.17.0.2      db 0ee227b81599 nextcloud_db</span><br></pre></td></tr></table></figure>
+<p>至此，部署完毕。</p>
+<p>参考链接</p>
+<ul>
+<li><a href="https://gz.lovelp.xin/archives/Docker%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98%20%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8B%20Compose" target="_blank" rel="noopener">Docker 零基础到实战 三剑客之 Compose</a></li>
+<li><a href="https://love2.io/@ayamefing/doc/docker_practice/README.md" target="_blank" rel="noopener">Docker — 从入门到实践</a></li>
+<li><a href="https://www.cnblogs.com/you-siki/p/Docker-NextCloud-MySQL.html" target="_blank" rel="noopener">使用 Docker 部署 NextCloud+MySQL 构建私有云盘</a></li>
+<li><a href="https://docker_practice.gitee.io/zh-cn/" target="_blank" rel="noopener">Docker 从入门到实践</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/nextcloud/" rel="tag"># nextcloud</a>
+          
+            <a href="/tags/cloud/" rel="tag"># cloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/01/sftp限制用户访问目录/" rel="next" title="sftp限制用户访问目录">
+                <i class="fa fa-chevron-left"></i> sftp限制用户访问目录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/22/composer安装/" rel="prev" title="composer安装">
+                composer安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hyj1412</p>
+              <div class="site-description motion-element" itemprop="description">记录生活,书写心得,分享成果</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker"><span class="nav-number">1.</span> <span class="nav-text">docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-介绍"><span class="nav-number">1.1.</span> <span class="nav-text">docker 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-安装"><span class="nav-number">1.2.</span> <span class="nav-text">docker 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-基本概念"><span class="nav-number">1.3.</span> <span class="nav-text">docker 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像"><span class="nav-number">1.3.1.</span> <span class="nav-text">镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器"><span class="nav-number">1.3.2.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库"><span class="nav-number">1.3.3.</span> <span class="nav-text">仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-基本命令"><span class="nav-number">1.3.4.</span> <span class="nav-text">docker 基本命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nextcloud"><span class="nav-number">2.</span> <span class="nav-text">nextcloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nextcloud-介绍"><span class="nav-number">2.1.</span> <span class="nav-text">nextcloud 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-部署-nextcloud"><span class="nav-number">2.2.</span> <span class="nav-text">docker 部署 nextcloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hyj1412</span>
+  <!-- create license start -->
+  <span class="post-meta-divider">|</span>
+  <div style="opacity: 0.68; display: inline-block;vertical-align: middle;">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" rel="noopener" target="_blank">
+      <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+    </a>
+  </div>
+  <!-- create license end -->
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
