@@ -328,6 +328,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2014/08/14/iframe-upload/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2014/08/14/iframe-upload/" class="post-title-link" itemprop="url">iframe upload</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2014-08-14 22:46:20" itemprop="dateCreated datePublished" datetime="2014-08-14T22:46:20+08:00">2014-08-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="html"><a href="#html" class="headerlink" title="html:"></a>html:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">'POST'</span> <span class="attr">enctype</span>=<span class="string">'multipart/form-data'</span> <span class="attr">target</span>=<span class="string">'upload_iframe'</span> <span class="attr">class</span>=<span class="string">'common-note-form new_note'</span> <span class="attr">accept-charset</span>=<span class="string">"UTF-8"</span> <span class="attr">action</span>=<span class="string">'http://localhost/boss/profile/issue/js/upload_file";'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">'comment'</span> <span class="attr">name</span>=<span class="string">'comment'</span> <span class="attr">class</span>=<span class="string">'note_text form-control'</span> <span class="attr">rows</span>=<span class="string">'5'</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"note-form-actions"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"buttons"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">value</span>=<span class="string">"15"</span> <span class="attr">name</span>=<span class="string">'issue_id'</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">'submitcom'</span> <span class="attr">class</span>=<span class="string">'btn btn-primary comment-btn btn-grouped js-comment-button'</span> <span class="attr">type</span>=<span class="string">'submit'</span> <span class="attr">value</span>=<span class="string">'发表评论'</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"note-form-option pull-left"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"choose-btn btn js-choose-note-attachment-button btn-default"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">             <span class="tag">&lt;<span class="name">span</span>&gt;</span>选择文件...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">         <span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"file_name js-attachment-filename"</span>&gt;</span>文件名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"js-note-attachment-input hidden"</span> <span class="attr">id</span>=<span class="string">"note_attachment"</span> <span class="attr">name</span>=<span class="string">"files[note]"</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">'upload_iframe'</span> <span class="attr">class</span>=<span class="string">'hide'</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>####js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击上传文件按钮，触发input file空间</span></span><br><span class="line">$(<span class="string">'.choose-btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> target;</span><br><span class="line">  <span class="keyword">return</span> target = $(<span class="keyword">this</span>).closest(<span class="string">'form'</span>),</span><br><span class="line">  target.find(<span class="string">'.js-note-attachment-input'</span>).click();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// file空间变化事件</span></span><br><span class="line">$(<span class="string">'.js-note-attachment-input'</span>).on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ele = $(<span class="keyword">this</span>).closest(<span class="string">'form'</span>);</span><br><span class="line">  <span class="keyword">var</span> file_name = $(<span class="keyword">this</span>).val().replace(<span class="regexp">/^.*[\\\/]/</span>, <span class="string">""</span>);</span><br><span class="line">  ele.find(<span class="string">'.js-attachment-filename'</span>).text(file_name);</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//发表评论</span></span><br><span class="line">$(<span class="string">'#submitcom'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="keyword">this</span>).closest(<span class="string">'form'</span>).submit();</span><br><span class="line">    <span class="keyword">var</span> comment = $(<span class="string">'#comment'</span>).val();</span><br><span class="line">    <span class="keyword">if</span>(!comment.length) &#123;</span><br><span class="line">      $.show_message(<span class="string">'评论内容不能为空！'</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      $(<span class="keyword">this</span>).closet(<span class="string">'form'</span>).submit();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2014/08/14/fedora-yum-e6-ba-90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1063,187 +1245,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2014/08/11/fedora-gvim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hyj1412">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hyj1412's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2014/08/11/fedora-gvim/" class="post-title-link" itemprop="url">fedora gvim</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2014-08-11 00:52:10" itemprop="dateCreated datePublished" datetime="2014-08-11T00:52:10+08:00">2014-08-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="install"><a href="#install" class="headerlink" title="install"></a>install</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install vim</span><br><span class="line">yum remove vim-minimal</span><br><span class="line">yum install gvim</span><br></pre></td></tr></table></figure>
-<h4 id="some-problems"><a href="#some-problems" class="headerlink" title="some problems"></a>some problems</h4><p>1、Fedora 启动gvim提示Gtk-WARNING **: Invalid input string</p>
-<p>在fedora的gnome下安装gvim：”yum install vim-X11”，因为gnome界面语言设置成了中文，因此会把中文区域设置为zh_CN.utf8，而GVim能识别的中文区域设置为zh_CN.UTF-8。因此GVim会在启动时报错，且无法正常加载中文菜单。</p>
-<p>解决方案：<br>代码:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/vim/vim73/lang</span><br><span class="line">ln -s menu_zh_cn.utf-8.vim menu_zh_cn.utf8.vim</span><br></pre></td></tr></table></figure>
-<p>此方法使得GVim可以识别zh_CN.utf8，并采用于zh_CN.UTF-8完全相同的菜单设置。并且不影响系统的中文区域设置。</p>
-<p>2、’Taglist: Exuberant ctags (<a href="http://ctags.sf.net" target="_blank" rel="noopener">http://ctags.sf.net</a>) not found in PATH. Plugin is not loaded</p>
-<p>download from <a href="http://ctags.sourceforge.net/" target="_blank" rel="noopener">http://ctags.sourceforge.net/</a><br>After you unziped it, you have to set the Tlist_Ctags_Cmd variable in the .vimrc file to point to the ctags folder.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> Tlist_Ctags_Cmd = <span class="string">'/usr/bin/ctags'</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1290,7 +1291,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

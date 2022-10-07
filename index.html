@@ -328,6 +328,213 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2022/10/07/Go基础之切片/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/10/07/Go基础之切片/" class="post-title-link" itemprop="url">Go基础之切片</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2022-10-07 21:40:51 / Modified: 22:26:26" itemprop="dateCreated datePublished" datetime="2022-10-07T21:40:51+08:00">2022-10-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="定义以及初始化"><a href="#定义以及初始化" class="headerlink" title="定义以及初始化"></a>定义以及初始化</h3><p>切片是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装，支持自动扩容。</p>
+<p>切片是一个引用类型，它的内部结构包含地址、长度和容量。</p>
+<p>切片: 指针、长度、容量</p>
+<p>声明语法:</p>
+<p><code>var name []T</code></p>
+<p>例如:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="keyword">int</span></span><br><span class="line"><span class="comment">// []</span></span><br><span class="line">fmt.Println(s1)</span><br><span class="line"><span class="comment">// true 没有分配内存 == nil 故打印输出true</span></span><br><span class="line">fmt.Println(s1 == <span class="literal">nil</span>)</span><br><span class="line">s1 = []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="comment">// [1 2 3]</span></span><br><span class="line">fmt.Println(s1)</span><br></pre></td></tr></table></figure>
+<h4 id="切片的长度和容量"><a href="#切片的长度和容量" class="headerlink" title="切片的长度和容量"></a>切片的长度和容量</h4><p>可以通过使用内置的<code>len()</code>函数求长度，使用内置的<code>cap()</code>函数求切片的容量</p>
+<h4 id="切片表达式"><a href="#切片表达式" class="headerlink" title="切片表达式"></a>切片表达式</h4><p>切片的底层就是一个数组，所以可以基于数组通过切片表达式得到切片。切片表达式中的 <code>low</code> 和 <code>high</code> 表示一个索引范围（左包含，右不包含）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组</span></span><br><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// 切片</span></span><br><span class="line">slice := array[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line"><span class="comment">// slice:[2 3] len(slice):2 cap(slice):4</span></span><br><span class="line">fmt.Printf(<span class="string">"slice:%v len(slice):%v cap(slice):%v\n"</span>, slice, <span class="built_in">len</span>(slice), <span class="built_in">cap</span>(slice))</span><br></pre></td></tr></table></figure>
+<p>当然也可以忽略表达式中的索引。省略了<code>low</code> 则默认是 0，省略了<code>high</code> 则默认为切片操作数的长度</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">slice1 := array[<span class="number">1</span>:]</span><br><span class="line">slice2 := array[:<span class="number">3</span>]</span><br><span class="line">slice3 := array[:]</span><br></pre></td></tr></table></figure>
+<p>对切片在进行切片，<code>high</code> 的上限边界是切片的容量 <code>cap(slice)</code>，而不是长度</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">slice := array[<span class="number">1</span>:<span class="number">5</span>]</span><br><span class="line"><span class="comment">// slice:[2 3 4 5] len(slice):4 cap(slice):4</span></span><br><span class="line">fmt.Printf(<span class="string">"slice:%v len(slice):%v cap(slice):%v\n"</span>, slice, <span class="built_in">len</span>(slice), <span class="built_in">cap</span>(slice))</span><br><span class="line">subSlice := slice[<span class="number">3</span>:<span class="number">4</span>] <span class="comment">//这里的索引上限是slice的容量4</span></span><br><span class="line"><span class="comment">// subSlice:[5] len(subSlice):1 cap(subSlice):1</span></span><br><span class="line">fmt.Printf(<span class="string">"subSlice:%v len(subSlice):%v cap(subSlice):%v\n"</span>, subSlice, <span class="built_in">len</span>(subSlice), <span class="built_in">cap</span>(subSlice))</span><br></pre></td></tr></table></figure>
+<h4 id="使用-make-函数构造切片"><a href="#使用-make-函数构造切片" class="headerlink" title="使用 make() 函数构造切片"></a>使用 <code>make()</code> 函数构造切片</h4><p>格式:</p>
+<p><code>make([]T, size, cap)</code></p>
+<p>其中</p>
+<ul>
+<li>T: 切片元素类型</li>
+<li>size: 切片中元素的数量</li>
+<li>cap: 切片的容量</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明并初始化一个切片 make初始化 分配内存</span></span><br><span class="line">s10 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line"><span class="comment">// s10:[0 0] len(s10):2 cap(s10):10</span></span><br><span class="line">fmt.Printf(<span class="string">"s10:%v len(s10):%v cap(s10):%v\n"</span>, s10, <span class="built_in">len</span>(s10),<span class="built_in">cap</span>(s10))</span><br></pre></td></tr></table></figure>
+<h4 id="切片是引用类型"><a href="#切片是引用类型" class="headerlink" title="切片是引用类型"></a>切片是引用类型</h4><p>切片不存值, 下方的示例代码<code>s1</code>和<code>s2</code>底层指向同个数组, 故修改<code>s2</code>也影响了<code>s1</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125; <span class="comment">// [1 2 3]</span></span><br><span class="line">s2 := s1</span><br><span class="line">fmt.Println(s2) <span class="comment">// [1 2 3]</span></span><br><span class="line">s2[<span class="number">1</span>] = <span class="number">200</span></span><br><span class="line">fmt.Println(s1) <span class="comment">// [1 200 3]</span></span><br><span class="line">fmt.Println(s2) <span class="comment">// [1 200 3]</span></span><br></pre></td></tr></table></figure>
+<h3 id="切片的扩容策略"><a href="#切片的扩容策略" class="headerlink" title="切片的扩容策略"></a>切片的扩容策略</h3><ol>
+<li>如果申请的容量大于原来的 2 倍，那么就直接扩容至新申请的容量</li>
+<li>如果小于 1024，那么直接两倍</li>
+<li>如果大于 1024，就按照 1.25 倍去扩容</li>
+<li>具体存储的值的类型不同，扩容策略也有一定的不同</li>
+</ol>
+<h3 id="append-为切片添加元素"><a href="#append-为切片添加元素" class="headerlink" title="append 为切片添加元素"></a>append 为切片添加元素</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 []<span class="keyword">int</span></span><br><span class="line"><span class="comment">// s1 = make([]int, 1)</span></span><br><span class="line"><span class="comment">// 直接赋值会报错，因为没有初始化内存, 需要上一行的make进行初始化</span></span><br><span class="line"><span class="comment">// s1[0] = 100</span></span><br><span class="line"><span class="comment">// 自动初始化切片</span></span><br><span class="line">s1 = <span class="built_in">append</span>(s1, <span class="number">1</span>)</span><br><span class="line">fmt.Println(s1)</span><br></pre></td></tr></table></figure>
+<p><strong>append 还会自动扩容</strong></p>
+<h3 id="copy-复制切片"><a href="#copy-复制切片" class="headerlink" title="copy 复制切片"></a>copy 复制切片</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="comment">// var s2 []int // 声明了但是未初始化分配内存, copy失败，打印为空</span></span><br><span class="line"><span class="comment">// var s2 = make([]int, 0, 3) // 虽然make初始化了但是长度是0, copy不会自动扩容</span></span><br><span class="line"><span class="keyword">var</span> s2 = <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>, <span class="number">3</span>) <span class="comment">// 这个是可以copy成功的</span></span><br><span class="line"><span class="built_in">copy</span>(s2, s1)</span><br><span class="line">fmt.Println(s2)</span><br></pre></td></tr></table></figure>
+<h3 id="切片的遍历"><a href="#切片的遍历" class="headerlink" title="切片的遍历"></a>切片的遍历</h3><p>和数组一致，支持 <code>for</code> 和 <code>for range</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">11</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">    fmt.Println(i, s[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, value := <span class="keyword">range</span> s &#123;</span><br><span class="line">    fmt.Println(index, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>学习资料</strong></p>
+<ol>
+<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=22" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=22</a></li>
+<li><a href="https://www.liwenzhou.com/posts/Go/06_slice/" target="_blank" rel="noopener">https://www.liwenzhou.com/posts/Go/06_slice/</a></li>
+</ol>
+<p><strong>我的环境</strong></p>
+<ul>
+<li><code>Mac</code></li>
+<li><code>go1.19</code></li>
+<li><code>GoLand</code></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2022/10/07/Go基础之数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -373,7 +580,7 @@
                 
               
 
-              <time title="Created: 2022-10-07 21:26:16 / Modified: 21:39:41" itemprop="dateCreated datePublished" datetime="2022-10-07T21:26:16+08:00">2022-10-07</time>
+              <time title="Created: 2022-10-07 21:26:16 / Modified: 22:26:24" itemprop="dateCreated datePublished" datetime="2022-10-07T21:26:16+08:00">2022-10-07</time>
             
 
             
@@ -447,8 +654,8 @@
 <h3 id="数组是值类型"><a href="#数组是值类型" class="headerlink" title="数组是值类型"></a>数组是值类型</h3><p>赋值和传参会复制整个数组，因此改变副本的值，不会改变本身的值。</p>
 <p><strong>学习资料</strong></p>
 <ol>
-<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/</a></li>
-<li><a href="https://www.liwenzhou.com/archives/" target="_blank" rel="noopener">https://www.liwenzhou.com/archives/</a></li>
+<li><a href="https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=20" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fz4y1m7Pm/?p=20</a></li>
+<li><a href="https://www.liwenzhou.com/posts/Go/05_array/" target="_blank" rel="noopener">https://www.liwenzhou.com/posts/Go/05_array/</a></li>
 </ol>
 <p><strong>我的环境</strong></p>
 <ul>
@@ -1073,174 +1280,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/10/29/gitlab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hyj1412">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hyj1412's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/29/gitlab/" class="post-title-link" itemprop="url">gitlab</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-10-29 13:13:00 / Modified: 13:16:47" itemprop="dateCreated datePublished" datetime="2019-10-29T13:13:00+08:00">2019-10-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="添加-gitlab-repo"><a href="#添加-gitlab-repo" class="headerlink" title="添加 gitlab repo"></a>添加 gitlab repo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[gitlab-ce]</span><br><span class="line">name=gitlab-ce</span><br><span class="line">baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://packages.gitlab.com/gpg.key</span><br></pre></td></tr></table></figure>
-<h3 id="yum-安装-gitlab"><a href="#yum-安装-gitlab" class="headerlink" title="yum 安装 gitlab"></a>yum 安装 gitlab</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br><span class="line">yum install gitlab-ce</span><br><span class="line"><span class="comment"># 修改服务器地址</span></span><br><span class="line">vim /etc/gitlab/gitlab.rb</span><br></pre></td></tr></table></figure>
-<h3 id="配置-gitlab"><a href="#配置-gitlab" class="headerlink" title="配置 gitlab"></a>配置 gitlab</h3><blockquote>
-<p>vi /etc/gitlab/gitlab.rb</p>
-</blockquote>
-<p><code>external_url &#39;http://ip&#39;</code></p>
-<p>使配置生效</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1287,7 +1326,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

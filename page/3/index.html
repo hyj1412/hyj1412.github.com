@@ -328,6 +328,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/04/15/mysql导入导出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hyj1412">
+      <meta itemprop="description" content="记录生活,书写心得,分享成果">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hyj1412's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/15/mysql导入导出/" class="post-title-link" itemprop="url">mysql导入导出</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-15 00:00:24 / Modified: 00:13:22" itemprop="dateCreated datePublished" datetime="2019-04-15T00:00:24+08:00">2019-04-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h4><ul>
+<li>方法 1:</li>
+</ul>
+<p>mysql 命令导入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入后回车会提示输入密码</span></span><br><span class="line">mysql -u username -p databasename &lt; backupfile.sql</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法 2:</li>
+</ul>
+<p>source 命令导入数据库需要先登录到数库终端：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建数据库</span></span><br><span class="line">mysql&gt; create database cloud;</span><br><span class="line"><span class="comment"># 使用已创建的数据库</span></span><br><span class="line">mysql&gt; use cloud;</span><br><span class="line"><span class="comment"># 设置编码 utf8mb4 utf8</span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> names utf8mb4;</span><br><span class="line"><span class="comment"># 导入备份数据库(绝对路径)</span></span><br><span class="line">mysql&gt; <span class="built_in">source</span> /home/download/backupfile.sql</span><br></pre></td></tr></table></figure>
+<h4 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h4><ul>
+<li>导出表结构和数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入之后回车提示输入密码</span></span><br><span class="line">mysqldump -u username -p databasename &gt; ~/Downloads/backupfile.sql</span><br><span class="line"><span class="comment"># 或者 用户名、密码紧挨着参数-u -p</span></span><br><span class="line">mysqldump -u<span class="string">'username'</span> -p<span class="string">'password'</span> databasename &gt; ~/Downloads/backupfile.sql</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只导出表结构</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -p -d databasename &gt; ~/Downloads/backupfile.sql</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2019/04/14/mysql复制表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1063,192 +1241,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wqcode.com/2017/10/20/webpack2教程续之DllPlugin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hyj1412">
-      <meta itemprop="description" content="记录生活,书写心得,分享成果">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hyj1412's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/10/20/webpack2教程续之DllPlugin/" class="post-title-link" itemprop="url">webpack2教程续之DllPlugin</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-10-20 15:18:59" itemprop="dateCreated datePublished" datetime="2017-10-20T15:18:59+08:00">2017-10-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-09 14:34:48" itemprop="dateModified" datetime="2019-04-09T14:34:48+08:00">2019-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本文承接<code>webpack2教程</code>、<code>webpack2教程续之自动编译</code>以及<code>webpack2教程续之eslint检测</code>，本文所说的项目目录依旧是<code>webpack2</code></p>
-</blockquote>
-<p>在上三篇中，我们搭建了基于<code>webpack</code>的<code>vue</code>开发环境，并且启动了监听文件修改自动打包编译，也支持了eslint语法检查，接下来，我们需要思考的是，那些公共的库是不是可以剥离出来单独打包，因为第三方库往往不需要经常打包更新。</p>
-<p>对此，webpack的官方文档中出现了神器<code>DllPligin</code>，<a href="https://doc.webpack-china.org/plugins/dll-plugin/" target="_blank" rel="noopener">点击此处</a>查看文档。</p>
-<p><code>Dll</code>这个概念应该是借鉴了Windows系统的<code>dll</code>。一个dll包，就是一个纯纯的依赖库，它本身不能运行，是用来给你的app引用的。</p>
-<p>打包<code>dll</code>的时候，<code>Webpack</code>会将所有包含的库做一个索引，写在一个<code>manifest</code>文件中，而引用dll的代码<code>webpack.config.js</code>在打包的时候，只需要读取这个manifest文件，就可以了。</p>
-<p>为了查看效果，我在这里引入了一个第三方库，饿了么前端团队出品的基于 Vue.js 2.0 的后台组件库<a href="http://element.eleme.io/#/zh-CN" target="_blank" rel="noopener">Element</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/10/20/webpack2教程续之DllPlugin/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1295,7 +1287,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
